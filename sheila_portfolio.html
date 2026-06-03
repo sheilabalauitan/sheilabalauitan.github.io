@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheila Balauitan — Freelance Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FDF9F4;
+    --terracotta: #C4714A;
+    --terracotta-light: #E89B78;
+    --forest: #3D6B55;
+    --forest-light: #5A8C72;
+    --ink: #2C2418;
+    --ink-mid: #5C4F3A;
+    --ink-light: #9E8E78;
+    --border: #E8DDD0;
+    --shadow: rgba(60, 40, 20, 0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    padding: 70px 5% 60px;
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .header-left { animation: fadeUp 0.7s ease both; }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1.5px;
+    background: var(--terracotta);
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(38px, 6vw, 58px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .tagline {
+    font-size: 16px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    max-width: 480px;
+    font-weight: 300;
+  }
+
+  .header-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    color: var(--ink-mid);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .badge:hover { border-color: var(--terracotta-light); color: var(--terracotta); }
+  .badge .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--forest-light);
+  }
+
+  /* ── DECORATIVE CORNER ── */
+  .header-deco {
+    animation: fadeUp 0.7s 0.2s ease both;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+    padding-top: 8px;
+  }
+
+  .initials-circle {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: -0.02em;
+    box-shadow: 0 8px 32px rgba(196, 113, 74, 0.25);
+  }
+
+  .availability {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--forest);
+    background: #EBF4EF;
+    border: 1px solid #C0DCCb;
+    padding: 5px 12px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .availability::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--forest);
+    animation: pulse 2s infinite;
+  }
+
+  /* ── DIVIDER ── */
+  .wave-divider {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .wave-divider svg { width: 100%; height: 20px; }
+
+  /* ── MAIN CONTENT ── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 5% 80px;
+  }
+
+  section { margin-bottom: 64px; animation: fadeUp 0.6s ease both; }
+  section:nth-child(1) { animation-delay: 0.1s; }
+  section:nth-child(2) { animation-delay: 0.2s; }
+  section:nth-child(3) { animation-delay: 0.3s; }
+  section:nth-child(4) { animation-delay: 0.4s; }
+
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── ABOUT ── */
+  .about-box {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-box::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    font-family: 'Lora', serif;
+    font-size: 120px;
+    color: var(--terracotta);
+    opacity: 0.08;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .about-box p {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--ink-mid);
+    font-style: italic;
+  }
+  .about-box p strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .service-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    cursor: default;
+  }
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px var(--shadow);
+    border-color: var(--terracotta-light);
+  }
+
+  .service-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .service-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .service-desc {
+    font-size: 12.5px;
+    color: var(--ink-light);
+    line-height: 1.55;
+  }
+
+  /* ── WRITING SAMPLES ── */
+  .samples-list { display: flex; flex-direction: column; gap: 14px; }
+
+  .sample-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .sample-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 6px 24px var(--shadow);
+    border-color: var(--forest-light);
+  }
+
+  .sample-type {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    background: #EBF4EF;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+
+  .sample-title {
+    font-family: 'Lora', serif;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 5px;
+    line-height: 1.35;
+  }
+
+  .sample-desc {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.5;
+  }
+
+  .sample-arrow {
+    font-size: 18px;
+    color: var(--border);
+    transition: color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+  .sample-card:hover .sample-arrow {
+    color: var(--forest);
+    transform: translateX(3px);
+  }
+
+  /* ── CREDENTIALS STRIP ── */
+  .creds-strip {
+    background: linear-gradient(135deg, #2C2418 0%, #3D2F1E 100%);
+    border-radius: 16px;
+    padding: 28px 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cred-item { display: flex; align-items: center; gap: 12px; }
+
+  .cred-num {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--terracotta-light);
+    line-height: 1;
+  }
+
+  .cred-text { font-size: 13px; color: #C8B89A; line-height: 1.4; }
+  .cred-text strong { display: block; color: #F5EDE0; font-weight: 500; }
+
+  /* ── CONTACT ── */
+  .contact-box {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
+  }
+
+  .contact-box h3 {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .contact-box p {
+    font-size: 14px;
+    color: var(--ink-light);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 11px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .contact-link.primary {
+    background: var(--terracotta);
+    color: white;
+    box-shadow: 0 4px 16px rgba(196, 113, 74, 0.3);
+  }
+  .contact-link.primary:hover {
+    background: #B5613C;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(196, 113, 74, 0.4);
+  }
+
+  .contact-link.secondary {
+    background: var(--warm-white);
+    color: var(--ink-mid);
+    border: 1px solid var(--border);
+  }
+  .contact-link.secondary:hover {
+    border-color: var(--terracotta-light);
+    color: var(--terracotta);
+    transform: translateY(-2px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 5% 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+
+  footer p { font-size: 12px; color: var(--ink-light); }
+
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 12px; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--terracotta); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    header { grid-template-columns: 1fr; }
+    .header-deco { flex-direction: row; align-items: center; }
+    .creds-strip { flex-direction: column; align-items: flex-start; gap: 20px; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <p class="eyebrow">Freelance Portfolio</p>
+    <h1>Sheila<br>Balauitan</h1>
+    <p class="tagline">English educator, oral examiner, and writer who turns everyday observations into stories worth reading — and helps learners find their voice.</p>
+    <div class="header-badges">
+      <span class="badge"><span class="dot"></span>Online English Tutor</span>
+      <span class="badge"><span class="dot"></span>Curriculum Writer</span>
+      <span class="badge"><span class="dot"></span>Content Creator</span>
+      <span class="badge"><span class="dot"></span>Educational Blogger</span>
+    </div>
+  </div>
+  <div class="header-deco">
+    <div class="initials-circle">SB</div>
+    <div class="availability">Open to remote work</div>
+  </div>
+</header>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 960 20" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0 10 Q240 0 480 10 Q720 20 960 10" stroke="#E8DDD0" stroke-width="1" fill="none"/>
+  </svg>
+</div>
+
+<main>
+
+  <!-- ABOUT -->
+  <section>
+    <p class="section-label">About me</p>
+    <div class="about-box">
+      <p>I'm a <strong>secondary English teacher with 13 years of experience</strong> — including 9 years at an international school and a role as a <strong>certified IPSLE Oral Examiner</strong>. I know what proficient English sounds like, and I know how to help learners get there. Outside the classroom, I write about everyday life, personal growth, and the small things most people walk past without noticing. My writing lives at <strong>Substack</strong> and <strong>WordPress</strong>, and I'm building a freelance practice rooted in teaching, content, and genuine storytelling.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section>
+    <p class="section-label">What I offer</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🎙️</span>
+        <p class="service-title">English Tutoring & Oral Coaching</p>
+        <p class="service-desc">One-on-one sessions for oral exam prep, spoken fluency, and communication confidence — especially IPSLE and primary/secondary level.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📝</span>
+        <p class="service-title">Curriculum & Test Prep Writing</p>
+        <p class="service-desc">Lesson plans, practice materials, rubrics, and oral exam guides grounded in real assessment experience.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">✍️</span>
+        <p class="service-title">Educational Blogging</p>
+        <p class="service-desc">Thoughtful, teacher-voice articles for EdTech brands, parenting platforms, and education publishers.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📱</span>
+        <p class="service-title">Social Media Content</p>
+        <p class="service-desc">Content calendars, captions, and platform strategy — with a warm, human tone that builds real audiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING SAMPLES -->
+  <section>
+    <p class="section-label">Writing samples</p>
+    <div class="samples-list">
+
+      <a class="sample-card" href="https://substack.com/@sheilabalauitan" target="_blank" rel="noopener">
+        <div>
+          <span class="sample-type">Newsletter · Substack</span>
+          <p class="sample-title">Quietly Curious — Personal Essays & Observations</p>
+          <p class="sample-desc">A running Substack on everyday life, personal growth, and the small things worth paying attention to. Warm, honest, conversational.</p>
+        </div>
+        <span class="sample-arrow">→</span>
+      </a>
+
+      <a class="sample-card" href="https://sheyd0flife93.wordpress.com" target="_blank" rel="noopener">
+        <div>
+          <span class="sample-type">Blog · WordPress</span>
+          <p class="sample-title">Quietly Curious Blog</p>
+          <p class="sample-desc">Life commentary and reflective writing. A companion space to the Substack — rooted in personal experience and everyday observation.</p>
+        </div>
+        <span class="sample-arrow">→</span>
+      </a>
+
+      <div class="sample-card" style="cursor:default;">
+        <div>
+          <span class="sample-type">Blog Post · Education</span>
+          <p class="sample-title">The Modern Learner</p>
+          <p class="sample-desc">An educational piece exploring how today's students learn differently — drawing on real classroom experience and current pedagogy. Written for EdTech and curriculum audiences.</p>
+        </div>
+        <span class="sample-arrow" style="color: var(--border);">✦</span>
+      </div>
+
+      <div class="sample-card" style="cursor:default;">
+        <div>
+          <span class="sample-type">Research Summary · Education</span>
+          <p class="sample-title">Teacher Wellbeing: A Research Overview</p>
+          <p class="sample-desc">A professional-grade synthesis of current research on teacher burnout, wellbeing interventions, and institutional support — written for a professional development context.</p>
+        </div>
+        <span class="sample-arrow" style="color: var(--border);">✦</span>
+      </div>
+
+      <div class="sample-card" style="cursor:default;">
+        <div>
+          <span class="sample-type">Social Media · Content Strategy</span>
+          <p class="sample-title">F&B Brand Content Calendar</p>
+          <p class="sample-desc">A full social media content calendar for a food and beverage brand — platform-specific copy, scheduling strategy, and audience engagement hooks.</p>
+        </div>
+        <span class="sample-arrow" style="color: var(--border);">✦</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CREDENTIALS STRIP -->
+  <section>
+    <p class="section-label">By the numbers</p>
+    <div class="creds-strip">
+      <div class="cred-item">
+        <span class="cred-num">13</span>
+        <p class="cred-text"><strong>Years teaching English</strong>Primary & secondary levels</p>
+      </div>
+      <div class="cred-item">
+        <span class="cred-num">9</span>
+        <p class="cred-text"><strong>Years at one school</strong>International school, Singapore</p>
+      </div>
+      <div class="cred-item">
+        <span class="cred-num">2×</span>
+        <p class="cred-text"><strong>Active writing platforms</strong>Substack + WordPress</p>
+      </div>
+      <div class="cred-item">
+        <span class="cred-num">✓</span>
+        <p class="cred-text"><strong>IPSLE Oral Examiner</strong>Certified & trained</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <p class="section-label">Let's work together</p>
+    <div class="contact-box">
+      <h3>Available for remote projects</h3>
+      <p>Based in the Philippines · Open to clients worldwide · Philippine Standard Time (UTC+8)</p>
+      <div class="contact-links">
+        <a class="contact-link primary" href="mailto:your@email.com">✉ Send me an email</a>
+        <a class="contact-link secondary" href="https://substack.com/@sheilabalauitan" target="_blank" rel="noopener">📖 Read my Substack</a>
+        <a class="contact-link secondary" href="https://sheyd0flife93.wordpress.com" target="_blank" rel="noopener">🌿 Visit my blog</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 Sheila Balauitan · Freelance English Educator & Writer</p>
+  <div class="footer-links">
+    <a href="https://substack.com/@sheilabalauitan" target="_blank">Substack</a>
+    <a href="https://sheyd0flife93.wordpress.com" target="_blank">Blog</a>
+  </div>
+</footer>
+
+</body>
+</html>
